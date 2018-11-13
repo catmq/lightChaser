@@ -17,6 +17,10 @@ public class LightControl : MonoBehaviour {
     public float lightMaxRange = 50f;
     public float lightMaxDistance = 50f;
 
+    public bool fadeByDistance = false;
+    public float fadeMaxDistance = 3f;
+    public float fadeMinDistance = 0.8f;
+
     Material lightMaterial;
 
     public CustomFPC playerController;
@@ -47,25 +51,33 @@ public class LightControl : MonoBehaviour {
             }
             lightSource.range = lightRangeRatio * lightMaxRange;
 
-            if (playerController.IsWalking())
+            if (fadeByDistance)
             {
-                currentLightIntensity -= fadeSpeed * Time.deltaTime;
-                currentAlpha -= fadeSpeed * Time.deltaTime;
-                if (currentLightIntensity < minAlpha)
-                {
-                    currentLightIntensity = minAlpha;
-                }
-                if (currentAlpha < minAlpha)
-                {
-                    currentAlpha = minAlpha;
-                }
-                lightSource.intensity = currentLightIntensity;
-                lightMaterial.SetColor("_Color", currentLightSurfaceColor * currentAlpha);
-                lightDustModule.startColor = currentLightSurfaceColor * currentAlpha;
-                return;
+                currentLightIntensity = (playerDistance - fadeMinDistance) / (fadeMaxDistance - fadeMinDistance);
+                currentAlpha = currentLightIntensity;
             }
-            currentLightIntensity += recoverSpeed * Time.deltaTime;
-            currentAlpha += recoverSpeed * Time.deltaTime;
+            else
+            {
+                if (playerController.IsWalking())
+                {
+                    currentLightIntensity -= fadeSpeed * Time.deltaTime;
+                    currentAlpha -= fadeSpeed * Time.deltaTime;
+                    if (currentLightIntensity <minAlpha)
+                    {
+                        currentLightIntensity = minAlpha;
+                    }
+                    if (currentAlpha <minAlpha)
+                    {
+                        currentAlpha = minAlpha;
+                    }
+                    lightSource.intensity = currentLightIntensity;
+                    lightMaterial.SetColor("_Color", currentLightSurfaceColor * currentAlpha);
+                    lightDustModule.startColor = currentLightSurfaceColor * currentAlpha;
+                    return;
+                }
+                currentLightIntensity += recoverSpeed * Time.deltaTime;
+                currentAlpha += recoverSpeed * Time.deltaTime;
+            }
             if (currentLightIntensity > 1)
             {
                 currentLightIntensity = 1;
