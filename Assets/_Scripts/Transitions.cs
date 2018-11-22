@@ -135,7 +135,7 @@ public class Transitions : MonoBehaviour {
         particleModule.startColor = currentColor;
     }
 
-    public static IEnumerator Fade(Light light, float time, bool fadeIn)
+    public static IEnumerator Fade(Light light, float startIntensity, float endIntensity, float time)
     {
         float currentTime = 0;
         while (currentTime < time)
@@ -143,24 +143,24 @@ public class Transitions : MonoBehaviour {
             currentTime += Time.deltaTime;
             float timeRatio = currentTime / time;
             if (timeRatio > 1) timeRatio = 1;
-            if (fadeIn)
-            {
-                light.intensity = timeRatio;
-            }
-            else
-            {
-                light.intensity = timeRatio;
-            }
+            light.intensity = timeRatio * (endIntensity - startIntensity) + startIntensity;
             yield return null;
         }
-        if (fadeIn)
+        light.intensity = endIntensity;
+    }
+
+    public static IEnumerator Fade(LightControl lightControl, float startValue, float endValue, float time)
+    {
+        float currentTime = 0;
+        while (currentTime < time)
         {
-            light.intensity = 1;
+            currentTime += Time.deltaTime;
+            float timeRatio = currentTime / time;
+            if (timeRatio > 1) timeRatio = 1;
+            lightControl.transitionRatio = timeRatio * (endValue - startValue) + startValue;
+            yield return null;
         }
-        else
-        {
-            light.intensity = 0;
-        }
+        lightControl.transitionRatio = endValue;
     }
 
     public static IEnumerator Move(Transform transform, float time, Vector3 startPos, Vector3 targetPos,bool worldPos)

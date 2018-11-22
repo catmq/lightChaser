@@ -20,11 +20,16 @@ public class TextTrigger : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            textToTrigger.SetActive(true);
+            if (textToTrigger != null)
+            {
+                textToTrigger.GetComponent<TextControl>().TextFadeIn();
+            }
             if (textToDeactivate != null)
             {
-                textToDeactivate.SetActive(false);
+                textToDeactivate.GetComponent<TextControl>().TextFadeOut();
+                //textToDeactivate.SetActive(false);
             }
         }
+        gameObject.SetActive(false);
     }
 }

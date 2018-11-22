@@ -86,7 +86,7 @@ Transform:
   m_GameObject: {fileID: 1084328193265448}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4977724089757156}
   m_RootOrder: 1
@@ -124,7 +124,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1189462889868824}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 40}
+  m_LocalPosition: {x: 0, y: 1.5, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4804980240932022}
@@ -225,12 +225,19 @@ MonoBehaviour:
   lightSource: {fileID: 108417046152467248}
   lightObject: {fileID: 1084328193265448}
   lightDust: {fileID: 198927594567780970}
-  minAlpha: 0.1
+  lightFadeOut: {fileID: 0}
+  minAlpha: 0.9
   fadeSpeed: 0.4
-  recoverSpeed: 0.8
-  lightMaxRange: 50
-  lightMaxDistance: 50
+  recoverSpeed: 0
+  lightMaxRange: 20
+  lightMinIntensity: 1
+  lightMaxIntensity: 5
+  lightMaxDistance: 20
+  fadeByDistance: 0
+  fadeMaxDistance: 3
+  fadeMinDistance: 0.8
   playerController: {fileID: 0}
+  transitionRatio: 0
 --- !u!135 &135232955461223110
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -241,7 +248,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 1.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198927594567780970
 ParticleSystem:
@@ -254,7 +261,7 @@ ParticleSystem:
   simulationSpeed: 1
   stopAction: 0
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1

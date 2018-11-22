@@ -6,6 +6,7 @@ public class StageManager : MonoBehaviour {
 
     public static StageManager instance = null;
     public GameObject[] stages;
+    public int startStage;
     int currentLevel;
     // Use this for initialization
 
@@ -21,6 +22,11 @@ public class StageManager : MonoBehaviour {
         }
     }
     void Start () {
+        if (!stages[startStage].activeInHierarchy)
+        {
+            stages[startStage].SetActive(true);
+        }
+        currentLevel = startStage;
 	}
 	
 	// Update is called once per frame
