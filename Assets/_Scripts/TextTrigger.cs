@@ -6,8 +6,10 @@ public class TextTrigger : MonoBehaviour {
 
     public GameObject textToTrigger;
     public GameObject textToDeactivate;
-	// Use this for initialization
-	void Start () {
+
+    bool triggered;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -16,9 +18,9 @@ public class TextTrigger : MonoBehaviour {
 		
 	}
 
-    private void OnTriggerEnter(Collider other)
+    public void TriggerNextText()
     {
-        if (other.tag == "Player")
+        if (!triggered)
         {
             if (textToTrigger != null)
             {
@@ -29,7 +31,10 @@ public class TextTrigger : MonoBehaviour {
                 textToDeactivate.GetComponent<TextControl>().TextFadeOut();
                 //textToDeactivate.SetActive(false);
             }
+            triggered = true;
         }
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
+
+   
 }

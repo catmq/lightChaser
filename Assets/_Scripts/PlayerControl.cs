@@ -79,9 +79,13 @@ public class PlayerControl : MonoBehaviour {
             StartCoroutine(WaitAndStartNewLevel(fadeTime));
 
         }
-        if (other.gameObject.tag == "WaypointLight")
+        if (!inTransition && other.gameObject.GetComponent<LightTrigger>() != null)
         {
             other.gameObject.GetComponent<LightTrigger>().TriggerNextLight();
+        }
+        if (!inTransition && other.gameObject.GetComponent<TextTrigger>() != null)
+        {
+            other.gameObject.GetComponent<TextTrigger>().TriggerNextText();
         }
     }
 
@@ -95,7 +99,7 @@ public class PlayerControl : MonoBehaviour {
     IEnumerator WaitAndStartNewLevel(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        StageManager.instance.GoToNextStage();
         StartNewLevel();
+        StageManager.instance.GoToNextStage();
     }
 }

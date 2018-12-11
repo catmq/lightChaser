@@ -20,7 +20,8 @@ public class LightTrigger : MonoBehaviour {
     {
         if (!triggered)
         {
-            nextLight.Appear();
+            if (nextLight != null)
+                nextLight.Appear();
             LightControl lightControl = GetComponent<LightControl>();
             if (disappearAfterTrigger && lightControl != null)
                 lightControl.Disappear();

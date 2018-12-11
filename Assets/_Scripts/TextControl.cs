@@ -54,6 +54,7 @@ public class TextControl : MonoBehaviour {
         if (textComponent.isActiveAndEnabled) return;
         Vector3 playerPos = playerController.transform.position;
         playerPos.y = 0;
+        Debug.Log(playerPos);
         Vector3 textPlacementDirection = new Vector3(playerController.transform.forward.x, 0, playerController.transform.forward.z);
         Debug.Log(textPlacementDirection);
         Vector3 textPos = playerPos + textPlacementDirection.normalized * textAppearDistance;
