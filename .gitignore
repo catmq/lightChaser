@@ -2,3 +2,4 @@ Library/**
 Temp/**
 Assets/UnityVS/**
 .vs/**
+obj/Debug/**

@@ -4,11 +4,12 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: mat_sky
   m_Shader: {fileID: 4800000, guid: 2bc78775cd4355a43934a4f55aaee2ca, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _VARIANCE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -54,6 +55,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ToonShade:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -74,13 +79,20 @@ Material:
     - _SunRadiusB: 0.0466
     - _UVSec: 0
     - _ZWrite: 1
+    - _horizonNoise: 0.16
     - _horizonThickness: 0.05
-    - _horizonThickness_1: 0.1
-    - _horizonThickness_2: 0.05
+    - _horizonThickness_1: 0.17
+    - _horizonThickness_2: 0.03
+    - _variance: 1
+    - _varianceFrequency: 0.18
+    - _varianceStrength: 0.14
+    - _varianceWidth: 0.01
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.6273585, b: 0.6273585, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HorizonColor: {r: 0.086999886, g: 0.086999886, b: 0.086999886, a: 0.3019608}
+    - _HorizonColor: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0.105882354}
     - _HorizonColor_copy: {r: 0.13235295, g: 0.13235295, b: 0.13235295, a: 0.178}
     - _SkyColor: {r: 0, g: 0, b: 0, a: 1}
     - _SkyColor_copy: {r: 0, g: 0, b: 0, a: 1}
+    - _horizonColor: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 1}
+    - _skyColor: {r: 0, g: 0, b: 0, a: 1}
