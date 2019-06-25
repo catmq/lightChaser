@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: mat_light
   m_Shader: {fileID: 4800000, guid: fd1fd9bbdf98c4a49a571e2ebcce2511, type: 3}
   m_ShaderKeywords: _EMISSION
@@ -59,9 +60,13 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Fresnel: 0.08
     - _GlossMapScale: 1
     - _Glossiness: 0.597
     - _GlossyReflections: 1
+    - _Halo: 0.72
+    - _HaloInner: 0.62
+    - _HaloPow: 6
     - _Metallic: 0.053
     - _Mode: 0
     - _OcclusionStrength: 1
